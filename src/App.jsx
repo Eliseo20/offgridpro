@@ -444,8 +444,19 @@ const App = () => {
                     <p className="text-[10px] text-emerald-600 mt-2 font-bold uppercase tracking-widest italic text-center">Independencia energética por 30 años</p>
                   </div>
 
-                  <button className="w-full bg-yellow-400 text-emerald-950 py-5 rounded-3xl font-black text-sm flex items-center justify-center gap-3 shadow-lg active:scale-95 transition-all uppercase tracking-widest">
-                    RESERVAR COTIZACIÓN PDF <ChevronRight size={20} />
+                  <button
+                    onClick={() => {
+                      const phoneNumber = "56900000000"; // REEMPLAZA AQUÍ CON TU NÚMERO
+                      const message = `Hola! Me interesa solicitar una cotización formal para un Sistema Off-Grid.\n\n` +
+                        `📊 *Mi consumo actual:* ${Math.round(totals.monthlyKwh)} kWh/mes\n` +
+                        `⚡ *Equipo recomendado:* ${totals.selectedKit.id}\n` +
+                        `💰 *Inversión estimada:* $${totals.totalInvestment.toLocaleString()}\n\n` +
+                        `Me gustaría recibir asesoría para mi proyecto.`;
+                      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+                    }}
+                    className="w-full bg-yellow-400 text-emerald-950 py-5 rounded-3xl font-black text-sm flex items-center justify-center gap-3 shadow-lg active:scale-95 transition-all uppercase tracking-widest"
+                  >
+                    SOLICITAR COTIZACIÓN <ChevronRight size={20} />
                   </button>
 
                   <Disclaimer />
