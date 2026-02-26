@@ -52,8 +52,8 @@ export const MobileView = () => {
                                         <Calculator size={20} className="text-emerald-600" />
                                         Consumo Estimado
                                     </h2>
-                                    <button onClick={() => setShowInfo(true)} className="text-slate-400 hover:text-emerald-500 transition-colors">
-                                        <Info size={18} />
+                                    <button onClick={() => setShowInfo(true)} className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest bg-emerald-100 text-emerald-700 hover:bg-emerald-200 px-3 py-1.5 rounded-full transition-colors ml-2 shadow-sm">
+                                        <Info size={14} /> Instrucciones
                                     </button>
                                 </div>
                                 <p className="text-[11px] text-slate-400 mb-6 font-medium italic">Toca para agregar artefactos:</p>
@@ -127,13 +127,7 @@ export const MobileView = () => {
                             </div>
 
                             <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 space-y-4">
-                                <div className="flex justify-between items-center">
-                                    <div className="flex items-center gap-2 text-slate-400">
-                                        <Battery size={16} />
-                                        <span className="text-[10px] font-black uppercase tracking-widest">Mtto Anual Est.</span>
-                                    </div>
-                                    <input type="number" value={annualMaintenance} onChange={(e) => setAnnualMaintenance(parseFloat(e.target.value) || 0)} className="w-24 bg-slate-50 text-right font-black text-emerald-700 py-1.5 px-2 rounded-lg outline-none" />
-                                </div>
+
                                 <div className="flex justify-between items-center">
                                     <div className="flex items-center gap-2 text-slate-400">
                                         <Settings size={16} />
@@ -338,7 +332,10 @@ export const MobileView = () => {
                                     <strong>2. Ajusta las horas:</strong> En la lista que aparecerá abajo, indica cuántas <strong>horas al día</strong> en promedio utilizas cada uno.
                                 </p>
                                 <p>
-                                    <strong>3. Revisa tu proyección:</strong> Ve a la pestaña "Análisis" o "Plan" para ver tu propuesta solar completa.
+                                    <strong>3. Configura tu tarifa:</strong> En la pestaña de Consumo, si lo conoces, puedes ajustar <strong>Tarifa Red ($/kWh)</strong> para mayor exactitud.
+                                </p>
+                                <p>
+                                    <strong>4. Revisa tu proyección:</strong> Ve a la pestaña "Análisis" o "Plan" para ver tu propuesta solar completa.
                                 </p>
                             </div>
                             <button onClick={() => setShowInfo(false)} className="mt-6 w-full bg-emerald-100 text-emerald-700 hover:bg-emerald-200 py-3 rounded-xl font-black transition-colors uppercase tracking-widest text-xs">

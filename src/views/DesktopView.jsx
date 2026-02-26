@@ -64,8 +64,8 @@ export const DesktopView = () => {
                                         <Calculator className="text-emerald-600" size={24} />
                                         Consumo Estimado
                                     </h2>
-                                    <button onClick={() => setShowInfo(true)} className="text-slate-400 hover:text-emerald-500 transition-colors">
-                                        <Info size={20} />
+                                    <button onClick={() => setShowInfo(true)} className="flex items-center gap-1 text-[10px] sm:text-xs font-black uppercase tracking-widest bg-emerald-100 text-emerald-700 hover:bg-emerald-200 px-4 py-2 rounded-full transition-colors ml-2 shadow-sm">
+                                        <Info size={16} /> Instrucciones
                                     </button>
                                 </div>
                                 <span className="bg-emerald-100 text-emerald-700 text-xs font-black px-3 py-1 rounded-full">{selectedLoads.length} equipos</span>
@@ -145,13 +145,7 @@ export const DesktopView = () => {
                         </div>
 
                         <div className="bg-white rounded-3xl p-6 shadow-md border border-slate-100 space-y-4">
-                            <div className="flex justify-between items-center">
-                                <div className="flex items-center gap-3 text-slate-500">
-                                    <Battery size={20} className="text-emerald-500" />
-                                    <span className="text-xs font-black uppercase tracking-widest">Mtto Anual Est.</span>
-                                </div>
-                                <input type="number" value={annualMaintenance} onChange={(e) => setAnnualMaintenance(parseFloat(e.target.value) || 0)} className="w-32 bg-slate-50 focus:bg-white text-right font-black text-emerald-700 py-2 px-3 focus:outline-emerald-500 rounded-xl border border-transparent focus:border-emerald-500 transition-colors" />
-                            </div>
+
                             <div className="flex justify-between items-center">
                                 <div className="flex items-center gap-3 text-slate-500">
                                     <Settings size={20} className="text-slate-400" />
@@ -314,7 +308,10 @@ export const DesktopView = () => {
                                     <strong>2. Ajusta las horas:</strong> En la lista que aparecerá debajo, indica cuántas <strong>horas al día</strong> en promedio utilizas cada uno.
                                 </p>
                                 <p>
-                                    <strong>3. Revisa tu proyección:</strong> La plataforma calculará automáticamente tu demanda y proyectará el sistema solar recomendado para lograr independencia energética.
+                                    <strong>3. Configura tu tarifa:</strong> Si lo conoces, puedes ajustar el valor de la <strong>Tarifa Red ($/kWh)</strong> para una cotización más exacta.
+                                </p>
+                                <p>
+                                    <strong>4. Revisa tu proyección:</strong> La plataforma calculará automáticamente tu demanda y proyectará el sistema solar recomendado para lograr independencia energética.
                                 </p>
                             </div>
                             <button onClick={() => setShowInfo(false)} className="mt-6 w-full bg-emerald-100 text-emerald-700 hover:bg-emerald-200 py-3 rounded-xl font-black transition-colors uppercase tracking-widest text-xs">
