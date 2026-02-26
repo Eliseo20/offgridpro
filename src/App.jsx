@@ -307,39 +307,6 @@ const App = () => {
           {activeTab === 'dashboard' && (
             <div className="space-y-6 animate-in pb-4">
 
-              {/* INVERSIÓN INICIAL */}
-              <div className="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-100">
-                <div className="flex items-center gap-2 mb-6 text-emerald-600">
-                  <ShieldCheck size={20} />
-                  <h3 className="text-[11px] font-black uppercase tracking-widest leading-none">Inversión Inicial Proyecto</h3>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2">
-                      <div className="w-1.5 h-6 bg-slate-200 rounded-full" />
-                      <span className="text-sm text-slate-500 font-medium tracking-tight">Equipos S&L ({totals.selectedKit.id}):</span>
-                    </div>
-                    <span className="text-sm font-black text-slate-700">${totals.selectedKit.price.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2">
-                      <div className="w-1.5 h-6 bg-emerald-100 rounded-full" />
-                      <span className="text-sm text-slate-500 font-medium tracking-tight italic">Instalación & Estructura (est. 60%):</span>
-                    </div>
-                    <span className="text-sm font-black text-slate-700">${Math.round(totals.estInstallation).toLocaleString()}</span>
-                  </div>
-                  <div className="pt-4 border-t-2 border-slate-50 flex justify-between items-end">
-                    <div className="flex items-center gap-2 text-emerald-600">
-                      <Coins size={18} />
-                      <span className="text-[11px] font-black uppercase tracking-widest">TOTAL INVERSIÓN:</span>
-                    </div>
-                    <span className="text-2xl font-black text-emerald-600 tracking-tighter leading-none italic underline decoration-emerald-100 underline-offset-4">
-                      ${totals.totalInvestment.toLocaleString()}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
               {/* GRÁFICO COMPARATIVO */}
               <div className="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
                 <div className="flex justify-between items-center mb-4">
@@ -382,6 +349,31 @@ const App = () => {
                       <span className="text-[10px] font-black uppercase tracking-widest">Punto de Retorno (Payback):</span>
                     </div>
                     <span className="text-xl font-black text-emerald-600 tracking-tighter italic">{totals.paybackYears} Años</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* INVERSIÓN INICIAL SIMPLIFICADA */}
+              <div className="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-100">
+                <div className="flex items-center gap-2 mb-4 text-emerald-600">
+                  <ShieldCheck size={20} />
+                  <h3 className="text-[11px] font-black uppercase tracking-widest leading-none">Inversión Inicial Proyecto</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="pt-2 flex justify-between items-end">
+                    <div className="flex items-center gap-2 text-emerald-600">
+                      <Coins size={18} />
+                      <span className="text-[11px] font-black uppercase tracking-widest">TOTAL APROXIMADO:</span>
+                    </div>
+                    <span className="text-2xl font-black text-emerald-600 tracking-tighter leading-none italic underline decoration-emerald-100 underline-offset-4">
+                      ${totals.totalInvestment.toLocaleString()}
+                    </span>
+                  </div>
+
+                  <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 mt-4">
+                    <p className="text-[9px] text-slate-500 leading-relaxed text-justify">
+                      * El precio es un <strong>estimado</strong> sujeto a evaluación de factibilidad técnica. Puede variar según requerimientos de estructura (suelo/techo), ubicación de emplazamiento, altura de instalación y distancia de canalización.
+                    </p>
                   </div>
                 </div>
               </div>
