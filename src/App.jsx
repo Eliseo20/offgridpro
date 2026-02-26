@@ -446,7 +446,7 @@ const App = () => {
 
                   <button
                     onClick={() => {
-                      const phoneNumber = "56900000000"; // REEMPLAZA AQUÍ CON TU NÚMERO
+                      const phoneNumber = "56967856628"; // REEMPLAZA AQUÍ CON TU NÚMERO
                       const message = `Hola! Me interesa solicitar una cotización formal para un Sistema Off-Grid.\n\n` +
                         `📊 *Mi consumo actual:* ${Math.round(totals.monthlyKwh)} kWh/mes\n` +
                         `⚡ *Equipo recomendado:* ${totals.selectedKit.id}\n` +
