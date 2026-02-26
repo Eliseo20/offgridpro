@@ -14,11 +14,13 @@ import { Disclaimer } from '../components/Disclaimer';
 
 export const DesktopView = () => {
     const [showInfo, setShowInfo] = useState(false);
-    selectedLoads, addLoad, removeLoad, updateLoad,
+    const {
+        selectedLoads, addLoad, removeLoad, updateLoad,
         energyPrice, setEnergyPrice,
         annualMaintenance, setAnnualMaintenance,
         manualMonthlyKwh, setManualMonthlyKwh,
         totals, projections, requestQuote
+    } = useOffGridCalc();
 
     return (
         <div className="min-h-screen bg-slate-100 p-8 font-sans xl:p-12 overflow-y-auto">
