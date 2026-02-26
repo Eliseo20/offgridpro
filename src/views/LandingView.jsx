@@ -5,14 +5,8 @@ import { Sun, Leaf, ShieldCheck, Zap, ChevronRight } from 'lucide-react';
 export const LandingView = () => {
     const navigate = useNavigate();
 
-    const handleStart = () => {
-        // Escoger la ruta según el tamaño de la pantalla
-        if (window.innerWidth >= 1024) {
-            navigate('/web');
-        } else {
-            navigate('/app');
-        }
-    };
+    const handleStartDesktop = () => navigate('/web');
+    const handleStartMobile = () => navigate('/app');
 
     return (
         <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center p-6 font-sans text-center relative overflow-hidden">
@@ -51,12 +45,20 @@ export const LandingView = () => {
                     </div>
                 </div>
 
-                <button
-                    onClick={handleStart}
-                    className="w-full md:w-auto mx-auto bg-emerald-500 hover:bg-emerald-400 text-white px-14 py-6 rounded-full font-black text-lg md:text-xl flex items-center justify-center gap-4 shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:shadow-[0_0_60px_rgba(16,185,129,0.5)] hover:-translate-y-1 active:scale-95 transition-all uppercase tracking-widest"
-                >
-                    Empezar Simulación <ChevronRight size={28} />
-                </button>
+                <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+                    <button
+                        onClick={handleStartMobile}
+                        className="bg-slate-700/80 hover:bg-slate-600 text-white px-8 py-5 rounded-full font-black text-sm md:text-base flex items-center justify-center gap-3 shadow-lg border border-slate-600 hover:-translate-y-1 active:scale-95 transition-all uppercase tracking-widest"
+                    >
+                        Versión Celular <ChevronRight size={20} />
+                    </button>
+                    <button
+                        onClick={handleStartDesktop}
+                        className="bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-5 rounded-full font-black text-sm md:text-base flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] hover:-translate-y-1 active:scale-95 transition-all uppercase tracking-widest"
+                    >
+                        Versión PC de Escritorio <ChevronRight size={20} />
+                    </button>
+                </div>
             </div>
 
             <style dangerouslySetInnerHTML={{
