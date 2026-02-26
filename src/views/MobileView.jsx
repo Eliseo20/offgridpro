@@ -19,6 +19,7 @@ export const MobileView = () => {
         selectedLoads, addLoad, removeLoad, updateLoad,
         energyPrice, setEnergyPrice,
         annualMaintenance, setAnnualMaintenance,
+        manualMonthlyKwh, setManualMonthlyKwh,
         totals, projections, requestQuote
     } = useOffGridCalc();
 
@@ -130,10 +131,27 @@ export const MobileView = () => {
 
                                 <div className="flex justify-between items-center">
                                     <div className="flex items-center gap-2 text-slate-400">
-                                        <Settings size={16} />
-                                        <span className="text-[10px] font-black uppercase tracking-widest">Tarifa Red ($/kWh)</span>
+                                        <Calculator size={16} />
+                                        <div>
+                                            <span className="block text-[10px] font-black uppercase tracking-widest text-slate-700">Consumo Manual</span>
+                                            <span className="block text-[8px] text-slate-400 font-medium">Desde boleta (kWh/mes)</span>
+                                        </div>
                                     </div>
-                                    <input type="number" value={energyPrice} onChange={(e) => setEnergyPrice(parseFloat(e.target.value) || 0)} className="w-20 bg-slate-50 text-right font-black text-slate-700 py-1.5 px-2 rounded-lg outline-none" />
+                                    <input
+                                        type="number"
+                                        placeholder="Auto"
+                                        value={manualMonthlyKwh}
+                                        onChange={(e) => setManualMonthlyKwh(e.target.value)}
+                                        className="w-20 bg-slate-50 focus:bg-white text-right font-black text-emerald-700 py-1.5 px-2 focus:outline-emerald-500 rounded-lg border border-transparent focus:border-emerald-500 transition-colors placeholder:text-[9px] placeholder:font-normal"
+                                    />
+                                </div>
+
+                                <div className="flex justify-between items-center pt-3 border-t border-slate-100">
+                                    <div className="flex items-center gap-2 text-slate-400">
+                                        <Settings size={16} />
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-700">Tarifa Red ($/kWh)</span>
+                                    </div>
+                                    <input type="number" value={energyPrice} onChange={(e) => setEnergyPrice(parseFloat(e.target.value) || 0)} className="w-20 bg-slate-50 focus:bg-white text-right font-black text-slate-700 py-1.5 px-2 focus:outline-emerald-500 rounded-lg border border-transparent focus:border-emerald-500 transition-colors" />
                                 </div>
                             </div>
 

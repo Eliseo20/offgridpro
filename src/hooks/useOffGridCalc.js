@@ -7,6 +7,7 @@ export const useOffGridCalc = () => {
     const [energyPrice, setEnergyPrice] = useState(210);
     const [inflationRate, setInflationRate] = useState(8);
     const [annualMaintenance, setAnnualMaintenance] = useState(120000);
+    const [manualMonthlyKwh, setManualMonthlyKwh] = useState("");
 
     const addLoad = (preset) => {
         const newLoad = { ...preset, uniqueId: Date.now(), quantity: 1, hours: preset.category === 'Frío' || preset.category === 'Red' ? 24 : 1 };
@@ -26,8 +27,16 @@ export const useOffGridCalc = () => {
     };
 
     const totals = useMemo(() => {
-        const dailyKwh = selectedLoads.reduce((sum, load) => (load.power * load.quantity * load.hours) / 1000 + sum, 0);
-        const monthlyKwh = dailyKwh * 30;
+        let monthlyKwh = 0;
+        let dailyKwh = 0;
+
+        if (manualMonthlyKwh !== "" && !isNaN(parseFloat(manualMonthlyKwh))) {
+            monthlyKwh = parseFloat(manualMonthlyKwh);
+            dailyKwh = monthlyKwh / 30;
+        } else {
+            dailyKwh = selectedLoads.reduce((sum, load) => (load.power * load.quantity * load.hours) / 1000 + sum, 0);
+            monthlyKwh = dailyKwh * 30;
+        }
         const monthlyCostRef = monthlyKwh * energyPrice;
 
         let selectedKit = OFF_GRID_KITS[0];
@@ -50,7 +59,7 @@ export const useOffGridCalc = () => {
             totalInvestment,
             paybackYears: isFinite(paybackYears) ? paybackYears.toFixed(1) : '∞'
         };
-    }, [selectedLoads, energyPrice]);
+    }, [selectedLoads, energyPrice, manualMonthlyKwh]);
 
     const projections = useMemo(() => {
         const data = [];
@@ -94,6 +103,7 @@ export const useOffGridCalc = () => {
         energyPrice, setEnergyPrice,
         inflationRate, setInflationRate,
         annualMaintenance, setAnnualMaintenance,
+        manualMonthlyKwh, setManualMonthlyKwh,
         totals, projections,
         requestQuote
     };
