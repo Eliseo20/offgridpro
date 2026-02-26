@@ -428,8 +428,8 @@ const App = () => {
                   <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100">
                     <p className="text-[10px] font-black text-slate-400 uppercase mb-4 tracking-widest text-center">Ficha Resumen</p>
                     <div className="space-y-3 text-left">
-                      <div className="flex justify-between text-sm items-center"><span className="text-slate-500 font-medium">Equipos:</span><span className="font-black text-slate-800 uppercase tracking-tighter text-right">{totals.selectedKit.id}</span></div>
-                      <div className="flex justify-between text-sm items-center"><span className="text-slate-500 font-medium italic underline decoration-emerald-100">Instalación (est. 60%):</span><span className="font-black text-slate-600 tracking-tighter text-right">${Math.round(totals.estInstallation).toLocaleString()}</span></div>
+                      <div className="flex justify-between text-sm items-center"><span className="text-slate-500 font-medium">Mtto. Anual Recomendado:</span><span className="font-black text-slate-800 uppercase tracking-tighter text-right">${Math.round(annualMaintenance).toLocaleString()}</span></div>
+                      <div className="flex justify-between text-sm items-center"><span className="text-slate-500 font-medium italic underline decoration-emerald-100">Anticipo Instalación (60%):</span><span className="font-black text-slate-600 tracking-tighter text-right">${Math.round(totals.totalInvestment * 0.6).toLocaleString()}</span></div>
                       <div className="pt-2 border-t border-slate-200">
                         <div className="flex justify-between text-sm items-center"><span className="text-slate-500 font-black tracking-widest uppercase text-[10px]">TOTAL PROYECTO:</span><span className="text-xl font-black text-emerald-600 tracking-tighter italic underline decoration-emerald-200 decoration-4">${totals.totalInvestment.toLocaleString()}</span></div>
                       </div>
