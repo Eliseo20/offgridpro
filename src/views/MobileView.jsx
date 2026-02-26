@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Sun, Calculator, Zap, Trash2, BarChart3, Clock, TrendingUp,
     AlertTriangle, ChevronRight, FileText, Settings, Battery,
-    ShieldCheck, Search, Coins
+    ShieldCheck, Search, Coins, Info, X
 } from 'lucide-react';
 import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -13,6 +13,7 @@ import { PRESET_LOADS, HISTORICAL_BCN_DATA } from '../lib/constants';
 import { Disclaimer } from '../components/Disclaimer';
 
 export const MobileView = () => {
+    const [showInfo, setShowInfo] = useState(false);
     const {
         activeTab, setActiveTab,
         selectedLoads, addLoad, removeLoad, updateLoad,
@@ -46,10 +47,15 @@ export const MobileView = () => {
                     {activeTab === 'calc' && (
                         <div className="space-y-4 animate-in pb-4">
                             <div className="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-100">
-                                <h2 className="text-lg font-black text-slate-800 mb-1 flex items-center gap-2 leading-none">
-                                    <Calculator size={20} className="text-emerald-600" />
-                                    Consumo Estimado
-                                </h2>
+                                <div className="flex justify-between items-center mb-1">
+                                    <h2 className="text-lg font-black text-slate-800 flex items-center gap-2 leading-none">
+                                        <Calculator size={20} className="text-emerald-600" />
+                                        Consumo Estimado
+                                    </h2>
+                                    <button onClick={() => setShowInfo(true)} className="text-slate-400 hover:text-emerald-500 transition-colors">
+                                        <Info size={18} />
+                                    </button>
+                                </div>
                                 <p className="text-[11px] text-slate-400 mb-6 font-medium italic">Toca para agregar artefactos:</p>
 
                                 <div className="grid grid-cols-4 gap-2 mb-6 h-56 overflow-y-auto pr-1 custom-scroll">
@@ -312,6 +318,36 @@ export const MobileView = () => {
                     </button>
                 </nav>
 
+                {showInfo && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+                        <div className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl animate-in zoom-in-95">
+                            <div className="flex justify-between items-center mb-4">
+                                <h3 className="text-lg font-black text-slate-800 flex items-center gap-2">
+                                    <Info className="text-emerald-500" size={24} />
+                                    Instrucciones de Uso
+                                </h3>
+                                <button onClick={() => setShowInfo(false)} className="text-slate-400 hover:text-slate-600 p-1">
+                                    <X size={24} />
+                                </button>
+                            </div>
+                            <div className="space-y-4 text-slate-600 text-sm leading-relaxed">
+                                <p>
+                                    <strong>1. Selecciona tus equipos:</strong> Toca los íconos de la cuadrícula superior para agregar los aparatos eléctricos que utilizas.
+                                </p>
+                                <p>
+                                    <strong>2. Ajusta las horas:</strong> En la lista que aparecerá abajo, indica cuántas <strong>horas al día</strong> en promedio utilizas cada uno.
+                                </p>
+                                <p>
+                                    <strong>3. Revisa tu proyección:</strong> Ve a la pestaña "Análisis" o "Plan" para ver tu propuesta solar completa.
+                                </p>
+                            </div>
+                            <button onClick={() => setShowInfo(false)} className="mt-6 w-full bg-emerald-100 text-emerald-700 hover:bg-emerald-200 py-3 rounded-xl font-black transition-colors uppercase tracking-widest text-xs">
+                                ¡Entendido!
+                            </button>
+                        </div>
+                    </div>
+                )}
+
                 <style dangerouslySetInnerHTML={{
                     __html: `
           .animate-in { animation: animIn 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -322,6 +358,6 @@ export const MobileView = () => {
           .custom-scroll::-webkit-scrollbar-thumb { background: #d1fae5; border-radius: 10px; }
         `}} />
             </div>
-        </div>
+        </div >
     );
 };

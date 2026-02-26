@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Sun, Calculator, Zap, Trash2, BarChart3, Clock, TrendingUp,
     AlertTriangle, ChevronRight, FileText, Settings, Battery,
-    ShieldCheck, Coins
+    ShieldCheck, Coins, Info, X
 } from 'lucide-react';
 import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -13,6 +13,7 @@ import { PRESET_LOADS, HISTORICAL_BCN_DATA } from '../lib/constants';
 import { Disclaimer } from '../components/Disclaimer';
 
 export const DesktopView = () => {
+    const [showInfo, setShowInfo] = useState(false);
     const {
         selectedLoads, addLoad, removeLoad, updateLoad,
         energyPrice, setEnergyPrice,
@@ -58,10 +59,15 @@ export const DesktopView = () => {
                     <div className="space-y-6">
                         <div className="bg-white rounded-[2rem] p-8 shadow-md border border-slate-100">
                             <div className="flex justify-between items-center mb-6">
-                                <h2 className="text-xl font-black text-slate-800 flex items-center gap-2 leading-none">
-                                    <Calculator className="text-emerald-600" size={24} />
-                                    Consumo Estimado
-                                </h2>
+                                <div className="flex items-center gap-3">
+                                    <h2 className="text-xl font-black text-slate-800 flex items-center gap-2 leading-none">
+                                        <Calculator className="text-emerald-600" size={24} />
+                                        Consumo Estimado
+                                    </h2>
+                                    <button onClick={() => setShowInfo(true)} className="text-slate-400 hover:text-emerald-500 transition-colors">
+                                        <Info size={20} />
+                                    </button>
+                                </div>
                                 <span className="bg-emerald-100 text-emerald-700 text-xs font-black px-3 py-1 rounded-full">{selectedLoads.length} equipos</span>
                             </div>
 
@@ -281,6 +287,36 @@ export const DesktopView = () => {
                         <Disclaimer />
                     </div>
                 </div>
+
+                {showInfo && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+                        <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl animate-in zoom-in-95">
+                            <div className="flex justify-between items-center mb-4">
+                                <h3 className="text-lg font-black text-slate-800 flex items-center gap-2">
+                                    <Info className="text-emerald-500" size={24} />
+                                    Instrucciones de Uso
+                                </h3>
+                                <button onClick={() => setShowInfo(false)} className="text-slate-400 hover:text-slate-600 p-1">
+                                    <X size={24} />
+                                </button>
+                            </div>
+                            <div className="space-y-4 text-slate-600 text-sm leading-relaxed">
+                                <p>
+                                    <strong>1. Selecciona tus equipos:</strong> Haz clic en los íconos de la cuadrícula superior para agregar los aparatos eléctricos que utilizas en tu hogar.
+                                </p>
+                                <p>
+                                    <strong>2. Ajusta las horas:</strong> En la lista que aparecerá debajo, indica cuántas <strong>horas al día</strong> en promedio utilizas cada uno.
+                                </p>
+                                <p>
+                                    <strong>3. Revisa tu proyección:</strong> La plataforma calculará automáticamente tu demanda y proyectará el sistema solar recomendado para lograr independencia energética.
+                                </p>
+                            </div>
+                            <button onClick={() => setShowInfo(false)} className="mt-6 w-full bg-emerald-100 text-emerald-700 hover:bg-emerald-200 py-3 rounded-xl font-black transition-colors uppercase tracking-widest text-xs">
+                                ¡Entendido!
+                            </button>
+                        </div>
+                    </div>
+                )}
 
                 <style dangerouslySetInnerHTML={{
                     __html: `
