@@ -168,7 +168,7 @@ const App = () => {
       const annualTrad = totals.monthlyKwh * 12 * currentPrice;
       cumTrad += annualTrad;
       cumSolar += currentMaint;
-      if ([1, 5, 15, 30].includes(year)) {
+      if ([1, 3, 5, 10, 15, 20, 25, 30].includes(year)) {
         data.push({
           year: `Añ ${year}`,
           Tradicional: Math.round(cumTrad),
