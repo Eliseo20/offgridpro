@@ -4,7 +4,7 @@ import { OFF_GRID_KITS } from '../lib/constants';
 export const useOffGridCalc = () => {
     const [activeTab, setActiveTab] = useState('calc');
     const [selectedLoads, setSelectedLoads] = useState([]);
-    const [energyPrice, setEnergyPrice] = useState(210);
+    const [energyPrice, setEnergyPrice] = useState(187);
     const [inflationRate, setInflationRate] = useState(8);
     const [annualMaintenance, setAnnualMaintenance] = useState(120000);
     const [manualMonthlyKwh, setManualMonthlyKwh] = useState("");
