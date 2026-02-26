@@ -89,24 +89,20 @@ export const DesktopView = () => {
                                     <Zap size={140} />
                                 </div>
                                 <div className="relative z-10">
-                                    <div className="flex justify-between items-end mb-4">
-                                        <div>
-                                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2">Pago Actual en Red</p>
-                                            <p className="text-5xl font-black text-white leading-none tracking-tighter italic">
-                                                ${Math.round(totals.monthlyCostRef).toLocaleString()}
-                                            </p>
-                                        </div>
-                                        <div className="text-right">
-                                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Demanda Mes</p>
-                                            <p className="text-xl font-black text-emerald-400 mt-1 leading-none">{Math.round(totals.monthlyKwh)} kWh</p>
-                                        </div>
-                                    </div>
+                                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2">Pago Actual en Red</p>
+                                    <p className="text-5xl font-black text-white leading-none tracking-tighter mb-4 italic">
+                                        ${Math.round(totals.monthlyCostRef).toLocaleString()}
+                                    </p>
                                     <div className="pt-4 border-t border-slate-800 flex justify-between items-center text-left">
                                         <div>
-                                            <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest leading-none">Costo Anual Estimado</p>
+                                            <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest leading-none">Costo Anual</p>
                                             <p className="text-2xl font-black text-emerald-400 leading-none tracking-tighter mt-1">
                                                 ${Math.round(totals.monthlyCostRef * 12).toLocaleString()}
                                             </p>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest leading-none">Demanda</p>
+                                            <p className="text-xl font-black text-white mt-1 leading-none">{Math.round(totals.monthlyKwh)} kWh/m</p>
                                         </div>
                                     </div>
                                 </div>
